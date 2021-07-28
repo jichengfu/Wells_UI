@@ -1,0 +1,187 @@
+html {
+    height: 100%;
+  }
+
+  body {
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+  }
+  
+  .login-box {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+  }
+  
+  .login-box h2 {
+    font-weight: 900;
+    text-align: center;
+  }
+  
+  .login-box .user-box {
+    position: relative;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: rgb(0, 0, 0, .5);
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 2px solid rgb(0, 0, 0, .5);
+    outline: none;
+    background: transparent;
+    transition: .5s;
+  }
+
+  .login-box .user-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: rgba(95, 91, 91, 0.219);
+    pointer-events: none;
+    transition: .5s;
+  }
+  
+  .login-box .user-box input:focus ~ label {
+    top: -20px;
+    left: 0;
+    font-size: 12px;
+  }
+  
+  input:focus {
+    font-weight: bold;
+    border-bottom: 2px solid #02bd41;
+  }
+
+  
+  .login-box a {
+    color: rgb(32, 145, 4);
+    transition: .5s;
+  }
+  
+
+  #rect {
+    color: white;
+    width: 100%;
+    height: 100%;
+    background: rgb(32, 145, 4);
+    border-radius: 5%/50%;
+    box-shadow: 5px 5px 5px rgb(223, 219, 219);
+    margin-bottom: 10px;
+  }
+
+  #pre-auth {
+    display: block;
+  }
+
+  #post-auth {
+    display: none;
+  }
+
+  #main-content {
+    display: none;
+  }
+
+  .nav-tabs{
+    /* background-color: grey; */
+  }
+
+  .nav-tabs button {
+    text-decoration: none;
+    color: black;
+  }
+
+
+  #login-nav {
+    background: #f1741a;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 0.6fr 1.4fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "one three three"
+      "one three three"
+      "two three three";
+  }
+
+  .box-one {
+	  grid-area: one;
+	  margin-top: 15px;
+    background: #5486fc;
+	  width: 90%;
+    height: 400px;
+	  text-align: center;
+	  display: inline-block;
+  }
+
+  .box-one ul {
+	  text-align: start;
+  }
+  
+  .box-one li {
+	  margin-top: 40px;
+  }
+  
+  .box-two {
+    grid-area: two;
+    margin-top: 10px;
+    background: #f1741a;
+    width: 90%;
+    height: 200px;
+  }
+  
+  .box-three {
+    grid-area: three;
+    margin-top: 15px;
+    background: #5486fc;
+    height: 625px;
+  }
+
+  #map {
+    grid-area: three;
+    margin-top: 15px;
+    background: #5486fc;
+    height: 625px;
+  }
+
+  img {
+    vertical-align: text-bottom;
+  }
+
+  #login-nav button {
+    border: none;
+    background: none;
+    padding-top: 12px;
+    padding-bottom: 13px;
+    border-radius: 5px;
+  }
+
+
+  .navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+ 
+  .home-button {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    border: none;
+    background: none;
+  }
+
+  .home-button .fa-folder {
+    color: tan;
+  }

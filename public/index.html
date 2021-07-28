@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/a6bf7648ea.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Analytics</title>
+  </head>
+  <body>
+    <div id="pre-auth">
+      <div class="login-box">
+        <h2>Welcome</h2>
+        <form id="form-signin" method="post">
+          <div class="user-box">
+            <input type="email" name="email" />
+            <label>Username</label>
+          </div>
+          <div class="user-box">
+            <input type="password" name="password" />
+            <label>Password</label>
+          </div>
+          <button id="rect" type="submit" class="mx-auto btn">LOGIN</button>
+        </form>
+        <div>
+          <ul>
+            <li>
+              Forgot <a type="submit" class="mx-auto"> Username/Password? </a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              Don't have an account?
+              <a
+                type="submit"
+                class="mx-auto"
+                data-toggle="modal"
+                data-target="#modal-create-new-account"
+              >
+                Sign up
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Popup Info box  -->
+    <div
+      class="modal fade"
+      id="modal-popup-info"
+      data-backdrop="static"
+      data-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-popup-info-title"></h5>
+          </div>
+          <div class="modal-body" id="modal-popup-info-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div
+      class="modal fade"
+      id="modal-create-new-account"
+      data-backdrop="static"
+      data-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-create-new-account-label">
+              Create New Account
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="form-create-new-account" method="post">
+              <div>
+                <input type="email" name="email" placeholder="email address" />
+                <p id="signup-error-email" class="error-signup"></p>
+              </div>
+              <div>
+                <input type="password" name="password" placeholder="password" />
+                <p id="signup-error-password" class="error-signup"></p>
+              </div>
+              <div>
+                <input
+                  type="password"
+                  name="passwordConfirm"
+                  placeholder="confirm password"
+                />
+                <p id="signup-error-passwordConfirm" class="error-signup"></p>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-outline-primary">
+                  Create
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="post-auth">
+      <!-- Navbar -->
+      <!-- <nav class="nav navbar-expand-lg">
+        <div class="collapse navbar-collapse" id="navbarNav"> -->
+      <ul class="nav nav-tabs nav-fill w-100">
+        <li class="nav-link">
+          <button id="menu-home" class="nav-link main-nav">Home</button>
+        </li>
+        <li class="nav-link">
+          <button id="menu-well" class="nav-link main-nav">Well</button>
+        </li>
+        <li class="nav-link">
+          <button id="menu-petro" class="nav-link main-nav">
+            Petrophysics
+          </button>
+        </li>
+        <li class="nav-link">
+          <button id="menu-seismic" class="nav-link main-nav">Seismic</button>
+        </li>
+        <li class="nav-link">
+          <button id="menu-fault" class="nav-link main-nav">Fault</button>
+        </li>
+        <li class="nav-link">
+          <button id="menu-production" class="nav-link main-nav">
+            Production
+          </button>
+        </li>
+        <li class="nav-link">
+          <button id="menu-signout" class="btn btn-outline-danger">
+            Sign Out
+          </button>
+        </li>
+      </ul>
+      <!-- </div>
+      </nav> -->
+    </div>
+    <div id="main-content" class="">
+      <div id="map" style="display: none"></div>
+    </div>
+
+    <script>
+      let map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: {
+            lat: 51.513329,
+            lng: -0.08895,
+          },
+          zoom: 14,
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA207PAbvfKWK7vBqnA3XUHr6oAMmityUk&callback=initMap"></script>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/8.7.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.7.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.7.1/firebase-firestore.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <script type="module" src="app.js"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
