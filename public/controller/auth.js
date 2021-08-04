@@ -1,5 +1,3 @@
-// lesson_1
-
 import * as Element from "../viewpage/element.js";
 import * as FirebaseController from "./firebase_controller.js";
 import * as Util from "../viewpage/util.js";
@@ -108,4 +106,3 @@ export function addEventListeners() {
     }
   });
 }
-// lesson_1

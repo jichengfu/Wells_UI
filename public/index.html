@@ -13,6 +13,8 @@
       crossorigin="anonymous"
     />
     <link href="css/style.css" rel="stylesheet" />
+
+    <!-- Fontawsome -->
     <script
       src="https://kit.fontawesome.com/a6bf7648ea.js"
       crossorigin="anonymous"
@@ -33,7 +35,7 @@
             <input type="password" name="password" />
             <label>Password</label>
           </div>
-          <button id="rect" type="submit" class="mx-auto btn">LOGIN</button>
+          <button type="submit" class="rect mx-auto btn">LOGIN</button>
         </form>
         <div>
           <ul>
@@ -47,8 +49,8 @@
               <a
                 type="submit"
                 class="mx-auto"
-                data-toggle="modal"
-                data-target="#modal-create-new-account"
+                data-bs-toggle="modal"
+                data-bs-target="#modal-create-new-account"
               >
                 Sign up
               </a>
@@ -59,11 +61,12 @@
     </div>
 
     <!-- Modal: Popup Info box  -->
+    <!-- Modal -->
     <div
       class="modal fade"
       id="modal-popup-info"
-      data-backdrop="static"
-      data-keyboard="false"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
       tabindex="-1"
       aria-labelledby="staticBackdropLabel"
       aria-hidden="true"
@@ -72,13 +75,19 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modal-popup-info-title"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div class="modal-body" id="modal-popup-info-body"></div>
           <div class="modal-footer">
             <button
               type="button"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
             >
               Close
             </button>
@@ -87,12 +96,13 @@
       </div>
     </div>
 
-    <!-- Signup Modal -->
+    <!-- Modal: Create New Account -->
+    <!-- Modal -->
     <div
       class="modal fade"
       id="modal-create-new-account"
-      data-backdrop="static"
-      data-keyboard="false"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
       tabindex="-1"
       aria-labelledby="staticBackdropLabel"
       aria-hidden="true"
@@ -100,17 +110,13 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modal-create-new-account-label">
-              Create New Account
-            </h5>
+            <h5 class="modal-title" id="staticBackdropLabel">Sign Up</h5>
             <button
               type="button"
-              class="close"
-              data-dismiss="modal"
+              class="btn-close"
+              data-bs-dismiss="modal"
               aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+            ></button>
           </div>
           <div class="modal-body">
             <form id="form-create-new-account" method="post">
@@ -131,7 +137,11 @@
                 <p id="signup-error-passwordConfirm" class="error-signup"></p>
               </div>
               <div>
-                <button type="submit" class="btn btn-outline-primary">
+                <button
+                  type="submit"
+                  class="rect mx-auto btn"
+                  style="width: 50%"
+                >
                   Create
                 </button>
               </div>
@@ -143,44 +153,125 @@
 
     <div id="post-auth">
       <!-- Navbar -->
-      <!-- <nav class="nav navbar-expand-lg">
-        <div class="collapse navbar-collapse" id="navbarNav"> -->
-      <ul class="nav nav-tabs nav-fill w-100">
-        <li class="nav-link">
-          <button id="menu-home" class="nav-link main-nav">Home</button>
-        </li>
-        <li class="nav-link">
-          <button id="menu-well" class="nav-link main-nav">Well</button>
-        </li>
-        <li class="nav-link">
-          <button id="menu-petro" class="nav-link main-nav">
-            Petrophysics
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
           </button>
-        </li>
-        <li class="nav-link">
-          <button id="menu-seismic" class="nav-link main-nav">Seismic</button>
-        </li>
-        <li class="nav-link">
-          <button id="menu-fault" class="nav-link main-nav">Fault</button>
-        </li>
-        <li class="nav-link">
-          <button id="menu-production" class="nav-link main-nav">
-            Production
-          </button>
-        </li>
-        <li class="nav-link">
-          <button id="menu-signout" class="btn btn-outline-danger">
-            Sign Out
-          </button>
-        </li>
-      </ul>
-      <!-- </div>
-      </nav> -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav nav-tabs nav-fill w-100">
+              <li class="nav-link">
+                <button id="menu-home" class="nav-link main-nav">Home</button>
+              </li>
+              <li class="nav-link">
+                <button id="menu-well" class="nav-link main-nav">Well</button>
+              </li>
+              <li class="nav-link">
+                <button id="menu-petro" class="nav-link main-nav">
+                  Petrophysics
+                </button>
+              </li>
+              <li class="nav-link">
+                <button id="menu-seismic" class="nav-link main-nav">
+                  Seismic
+                </button>
+              </li>
+              <li class="nav-link">
+                <button id="menu-fault" class="nav-link main-nav">Fault</button>
+              </li>
+              <li class="nav-link">
+                <button id="menu-production" class="nav-link main-nav">
+                  Production
+                </button>
+              </li>
+              <li class="nav-link">
+                <button id="menu-signout" class="btn btn-outline-danger">
+                  Sign Out
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
     <div id="main-content" class="">
       <div id="map" style="display: none"></div>
     </div>
 
+    <!-- <ul class="tree">
+      <li>
+        <input type="checkbox" checked="checked" id="c1" />
+        <label class="tree_label" for="c1">Level 0</label>
+        <ul>
+          <li>
+            <input type="checkbox" checked="checked" id="c2" />
+            <label for="c2" class="tree_label">Level 1</label>
+            <ul>
+              <li><span class="tree_label">Level 2</span></li>
+              <li><span class="tree_label">Level 2</span></li>
+            </ul>
+          </li>
+          <li>
+            <input type="checkbox" id="c3" />
+            <label for="c3" class="tree_label"
+              >Looong level 1 <br />label text <br />with line-breaks</label
+            >
+            <ul>
+              <li><span class="tree_label">Level 2</span></li>
+              <li>
+                <input type="checkbox" id="c4" />
+                <label for="c4" class="tree_label"
+                  ><span class="tree_custom"
+                    >Specified tree item view</span
+                  ></label
+                >
+                <ul>
+                  <li><span class="tree_label">Level 3</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <input type="checkbox" id="c5" />
+        <label class="tree_label" for="c5">Level 0</label>
+        <ul>
+          <li>
+            <input type="checkbox" id="c6" />
+            <label for="c6" class="tree_label">Level 1</label>
+            <ul>
+              <li><span class="tree_label">Level 2</span></li>
+            </ul>
+          </li>
+          <li>
+            <input type="checkbox" id="c7" />
+            <label for="c7" class="tree_label">Level 1</label>
+            <ul>
+              <li><span class="tree_label">Level 2</span></li>
+              <li>
+                <input type="checkbox" id="c8" />
+                <label for="c8" class="tree_label">Level 2</label>
+                <ul>
+                  <li><span class="tree_label">Level 3</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul> -->
+
+    <!-- Google Maps -->
     <script>
       let map;
       function initMap() {

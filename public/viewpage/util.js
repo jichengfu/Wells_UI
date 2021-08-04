@@ -2,12 +2,19 @@ import * as Element from "./element.js";
 
 export function popupInfo(title, body, modal) {
   if (modal) {
-    $("#" + modal).modal("hide");
+    console.log(modal);
+    var hideModal = bootstrap.Modal.getInstance(document.getElementById(modal));
+    hideModal.hide();
   }
+
+  var myModal = new bootstrap.Modal(
+    document.getElementById("modal-popup-info"),
+    {}
+  );
 
   Element.popUpInfoTitle.innerHTML = title;
   Element.popUpInfoBody.innerHTML = body;
-  $("#modal-popup-info").modal("show");
+  myModal.show();
 }
 
 export function disableButton(button) {

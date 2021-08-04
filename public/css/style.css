@@ -3,11 +3,13 @@ html {
   }
 
   body {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     font-family: sans-serif;
   }
   
+
+  /* Login Page */
   .login-box {
     position: absolute;
     top: 30%;
@@ -26,7 +28,7 @@ html {
     position: relative;
   }
   
-  input {
+  #pre-auth input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -67,8 +69,7 @@ html {
     transition: .5s;
   }
   
-
-  #rect {
+  .rect {
     color: white;
     width: 100%;
     height: 100%;
@@ -99,10 +100,11 @@ html {
     color: black;
   }
 
-
   #login-nav {
     background: #f1741a;
   }
+
+  /* Basic Layout for all pages */
 
   .container {
     display: grid;
@@ -129,9 +131,9 @@ html {
   .box-one ul {
 	  text-align: start;
   }
-  
-  .box-one li {
-	  margin-top: 40px;
+
+  .home-button {
+    margin-top: 40px;
   }
   
   .box-two {
@@ -146,7 +148,8 @@ html {
     grid-area: three;
     margin-top: 15px;
     background: #5486fc;
-    height: 625px;
+    height: auto;
+    /* overflow: auto; */
   }
 
   #map {
@@ -185,3 +188,126 @@ html {
   .home-button .fa-folder {
     color: tan;
   }
+
+
+
+  /* Add Well Page*/
+
+  #AddWellMenu {
+    background: rgb(184, 182, 182);
+  }
+
+  #NewWellLabel {
+    /* display: inline; */
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 10px;
+    background: rgb(92, 126, 48);
+    border: #000;
+    display: inline-block;
+  }
+
+  #Well_Name {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+
+  .Add_Well_Container {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "one two Input_X three Input_Y"
+      "one two Input_X three Input_Y"
+      ". . . . ."; 
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  
+  #Head {
+    grid-area: one;
+    text-align: center;
+    font-size: large;
+  }
+
+  #Co_X {
+    grid-area: two;
+    text-align: center;
+    font-size: large;
+  }
+
+  #Co_Y {
+    grid-area: three;
+    text-align: center;
+    font-size: large;
+  }
+
+  #Input_X {
+    grid-area: Input_X;
+    font-size: medium;
+  }
+
+  #Input_Y {
+    grid-area: Input_Y;
+    font-size: medium;
+  }
+
+  .Add_Well_Spacing {
+    margin-bottom: 5px;
+  }
+
+
+  #New_Well_Table {
+    width: 80%;
+    margin: auto;
+  }
+
+  #Add_Well_Button_Container{
+    padding-top: 25px;
+    padding-bottom: 15px;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 20px; 
+    grid-template-areas: 
+      "first one two second"
+
+  }
+
+  .Add_Well_Buttons {
+    color: black;
+    width: 60%;
+    height: 35px;
+    transition: 0.5s;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #641060 0%, #9c1c87 51%, #da33b0 100%);
+  }
+
+  .Add_Well_Buttons:hover {
+    background: linear-gradient(to bottom, #e431b7 0%, #9c1c87 51%, #641060 100%);
+  }
+
+  .Add_Well_Buttons:active {
+    background: linear-gradient(to bottom, #641060 0%, #9c1c87 51%, #da33b0 100%);
+  }
+
+  #Button_One {
+    grid-area: one;
+  }
+
+  #Button_Two {
+    grid-area: two;
+  }
+
+  .error-well {
+    padding: 0px;
+    font-size: 10px;
+  }
+
+  /* Style for the well folder tree */
+
+  #tree {}
