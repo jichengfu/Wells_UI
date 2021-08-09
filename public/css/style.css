@@ -131,10 +131,6 @@ html {
   .box-one ul {
 	  text-align: start;
   }
-
-  .home-button {
-    margin-top: 40px;
-  }
   
   .box-two {
     grid-area: two;
@@ -178,6 +174,7 @@ html {
   }
  
   .home-button {
+    margin-top: 40px;
     color: black;
     text-decoration: none;
     font-size: 20px;
@@ -310,4 +307,18 @@ html {
 
   /* Style for the well folder tree */
 
-  #tree {}
+  #tree .well-tree-button{}
+
+  .well-tree-button {
+    margin-top: 40px;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    border: none;
+    background: none;
+  }
+/* 
+  .well-tree-button .fa-folder .fa-folder-open {
+    color: tan;
+  } */
+  

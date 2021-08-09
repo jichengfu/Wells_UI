@@ -73,3 +73,18 @@ export async function getWellsByGroup(groupName) {
   });
   return wells;
 }
+
+export async function getAllWells() {
+  const wells = [];
+  const snapShot = await firebase
+    .firestore()
+    .collection(Constant.collectionName.WELLS)
+    .orderBy("name", "desc")
+    .get();
+  snapShot.forEach((doc) => {
+    const w = new Well(doc.data());
+    w.docId = doc.id;
+    wells.push(w);
+  });
+  return wells;
+}

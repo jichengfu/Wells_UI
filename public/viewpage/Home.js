@@ -66,7 +66,7 @@ export function buildHomeScreen() {
     </ul>
   </div>
   <div class="box-two"></div>
-  <div class="box-three"><img src="../images/Home_TextPad.png" width="100%" height="100%"></div>
+  <div class="box-three"><img src="../images/Home_TextPad.png" width="100%" height="625px"></div>
 </div>
 
 	`;

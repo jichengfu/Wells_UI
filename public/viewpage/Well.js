@@ -104,7 +104,7 @@ export function NewWelllistener() {
             <div id="Input_Y">
               <input class="Add_Well_Spacing" type="number" step="any" name="Co_Y"/>
               <p id="well-y-error" class="error-well"></p>
-              <input type="text" name="spud"/>
+              <input type="date" name="spud"/>
               <p id="well-spud-error" class="error-well"></p>
             </div>
           </div>
@@ -247,7 +247,8 @@ export function AddWellButtonListener() {
     Util.enableButton(buttonOne, label);
 
     // update Box one
-    buildBoxOne();
+    buildBoxGroupOne();
+    buildBoxGroupTwo();
   });
 }
 
@@ -284,7 +285,10 @@ export function EditWelllistener() {
       <div>
         <form id="Edit-Well-Form" method="post">
           <div id="Well_Name">
-            Well Name <input type="text" name="wellName"/> 
+            Well Name
+            <select id="Well-Name-Options" name="wellName">
+              
+            </select>
             <p id="well-name-error" class="error-well"></p>
           </div>
           <div class="Add_Well_Container">
@@ -312,7 +316,7 @@ export function EditWelllistener() {
             <div id="Input_Y">
               <input class="Add_Well_Spacing" type="number" step="any" name="Co_Y"/>
               <p id="well-y-error" class="error-well"></p>
-              <input class="Add_Well_Spacing" type="text" name="spud"/>
+              <input class="Add_Well_Spacing" type="date" name="spud"/>
               <p id="well-spud-error" class="error-well"></p>
             </div>
           </div>
@@ -350,6 +354,7 @@ export function EditWelllistener() {
     addMenu.innerHTML = html;
     EditWellButtonListener();
     CancelEditWellButtonListener();
+    buildWellNameOptions();
   });
 }
 
@@ -475,6 +480,26 @@ export function CancelEditWellButtonListener() {
   });
 }
 
+export async function buildWellNameOptions() {
+  let element = document.getElementById("Well-Name-Option");
+  let wells = [];
+  try {
+    wells = await FirebaseController.getAllWells();
+  } catch (e) {
+    console.log(e);
+    Util.popupInfo;
+  }
+  let optionsMenu = document.getElementById("Well-Name-Options");
+  let html = `<option value="">--Please choose an option--</option>`;
+  for (let i = 0; i < wells.length; i++) {
+    let wellName = wells[i].name;
+    html += `
+      <option value="${wellName}">-${wellName}</option>
+    `;
+  }
+  optionsMenu.innerHTML = html;
+}
+
 let map;
 export async function initMap() {
   let wells = [];
@@ -515,13 +540,11 @@ export async function initMap() {
   }
 }
 
-export async function buildBoxOne() {
+export async function buildBoxGroupOne() {
   let wellsGroupOne = [];
-  let wellsGroupTwo = [];
 
   try {
     wellsGroupOne = await FirebaseController.getWellsByGroup("Group 1");
-    wellsGroupTwo = await FirebaseController.getWellsByGroup("Group 2");
   } catch (e) {
     console.log(e);
     Util.popupInfo("Box One building error", "Could not get wells by group!");
@@ -532,7 +555,6 @@ export async function buildBoxOne() {
   for (let i = 0; i < wellsGroupOne.length; i++) {
     let wellName = wellsGroupOne[i].name;
     let wellShowing = wellsGroupOne[i].showing;
-    let wellId = wellsGroupOne[i].docId;
     if (wellShowing == true) {
       htmlOne += `
         <li style="font-size: 10px">
@@ -555,6 +577,17 @@ export async function buildBoxOne() {
   // add listeners to inputs
   for (let i = 0; i < wellsGroupOne.length; i++)
     addCheckBoxListeners(wellsGroupOne[i].docId, wellsGroupOne[i].name);
+}
+
+export async function buildBoxGroupTwo() {
+  let wellsGroupTwo = [];
+
+  try {
+    wellsGroupTwo = await FirebaseController.getWellsByGroup("Group 2");
+  } catch (e) {
+    console.log(e);
+    Util.popupInfo("Box One building error", "Could not get wells by group!");
+  }
 
   // fill Group 2
   let htmlTwo = "";
@@ -585,6 +618,51 @@ export async function buildBoxOne() {
     addCheckBoxListeners(wellsGroupTwo[i].docId, wellsGroupTwo[i].name);
 }
 
+export async function addGroupButtonListeners() {
+  // build for group one
+  let clickedOne = true;
+  let elementOne = document.getElementById("GroupOneButton");
+  elementOne.addEventListener("click", async () => {
+    if (clickedOne == true) {
+      await buildBoxGroupOne();
+      elementOne.innerHTML = `
+        <i class="fas fa-folder-open" style="color: tan"></i> 
+        Group 1
+      `;
+      clickedOne = false;
+    } else {
+      elementOne.innerHTML = `
+        <i class="fas fa-folder" style="color: tan"></i> 
+        Group 1
+      `;
+      let groupOne = document.getElementById("GroupOne");
+      groupOne.innerHTML = "";
+      clickedOne = true;
+    }
+  });
+
+  // build for group two
+  let clickedTwo = true;
+  let elementTwo = document.getElementById("GroupTwoButton");
+  elementTwo.addEventListener("click", async () => {
+    console.log(clickedTwo);
+    await buildBoxGroupTwo();
+    if (clickedTwo == true) {
+      elementTwo.innerHTML = `
+        <i class="fas fa-folder-open" style="color: tan"></i>
+        Group 2
+      `;
+      clickedTwo = false;
+    } else {
+      elementTwo.innerHTML = `
+        <i class="fas fa-folder" style="color: tan"></i>
+        Group 2
+      `;
+      clickedTwo = true;
+    }
+  });
+}
+
 // checkbox listeners
 export async function addCheckBoxListeners(wellId, wellName) {
   let element = document.getElementById(wellName);
@@ -606,7 +684,6 @@ export async function addCheckBoxListeners(wellId, wellName) {
       }
       initMap();
     } else {
-      // console.log(wellName);
       const showing = false;
       const updateWell = {
         showing: showing,
@@ -658,16 +735,24 @@ export function buildWellScreen() {
   
   <div class="container">
     <div class="box-one">
-      <ul id="tree">
-        <li>Group 1
-            <ul id="GroupOne">
+      <ul id="tree" style="list-style-type:none;">
+        <li>
+          <button class="well-tree-button" id="GroupOneButton">
+            <i class="fas fa-folder" style="color: tan"></i> 
+            Group 1
+          </button>
+          <ul id="GroupOne" style="list-style-type:none;">
 
-            </ul>
+          </ul>
         </li>
-        <li>Group 2
-            <ul id="GroupTwo">
+        <li>
+          <button class="well-tree-button" id="GroupTwoButton">
+            <i class="fas fa-folder" style="color: tan"></i> 
+            Group 2
+          </button>
+          <ul id="GroupTwo" style="list-style-type:none;">
 
-            </ul>
+          </ul>
         </li>
       </ul>
     </div>
@@ -695,6 +780,7 @@ export async function well_page() {
   ThreeDlistener();
   NewWelllistener();
   EditWelllistener();
-  buildBoxOne();
+  // buildBoxOne();
+  addGroupButtonListeners();
   initMap();
 }
