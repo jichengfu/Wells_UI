@@ -287,7 +287,7 @@ export function EditWelllistener() {
           <div id="Well_Name">
             Well Name
             <select id="Well-Name-Options" name="wellName">
-              
+              <option value="">--Please choose an option--</option>
             </select>
             <p id="well-name-error" class="error-well"></p>
           </div>
@@ -355,6 +355,7 @@ export function EditWelllistener() {
     EditWellButtonListener();
     CancelEditWellButtonListener();
     buildWellNameOptions();
+    addLoadWellListeners();
   });
 }
 
@@ -498,6 +499,40 @@ export async function buildWellNameOptions() {
     `;
   }
   optionsMenu.innerHTML = html;
+}
+
+export async function addLoadWellListeners() {
+  let element = document.getElementById("Well-Name-Options");
+  element.addEventListener("change", async (e) => {
+    let wellName = e.target.value;
+    let well = [];
+    try {
+      well = await FirebaseController.getEditWell(wellName);
+    } catch (e) {
+      console.log(e);
+      Util.popupInfo("Loading Well Error", "Could not load selected well!");
+    }
+
+    let long = well[0].long;
+    let type = well[0].type;
+    let lat = well[0].lat;
+    let spud = well[0].spud;
+
+    // // update inputs on edit page
+    document.getElementById("Input_X").innerHTML = `
+        <input class="Add_Well_Spacing" type="number" step="any" name="Co_X" value="${long}"/>
+        <p id="well-x-error" class="error-well"></p>
+        <input class="Add_Well_Spacing" type="text" name="wellType" value="${type}"/>
+        <p id="well-type-error" class="error-well"></p>
+      `;
+
+    document.getElementById("Input_Y").innerHTML = `
+        <input class="Add_Well_Spacing" type="number" step="any" name="Co_Y" value="${lat}"/>
+        <p id="well-y-error" class="error-well"></p>
+        <input class="Add_Well_Spacing" type="date" name="spud" value="${spud}"/>
+        <p id="well-spud-error" class="error-well"></p>
+      `;
+  });
 }
 
 let map;

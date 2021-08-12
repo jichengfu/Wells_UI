@@ -18,8 +18,8 @@ export function LogViewerlistener() {
       buttons[i].style.background = "#f1741a";
     }
     element.style.background = "rgb(32, 145, 4)";
-    let boxOne = document.getElementById("Petro-Img-BoxOne");
-    boxOne.src = "../images/Petro_LogViewer_BoxOne.png";
+    // let boxOne = document.getElementById("Petro-Img-BoxOne");
+    // boxOne.src = "../images/Petro_LogViewer_BoxOne.png";
     let boxTwo = document.getElementById("Petro-Img-BoxTwo");
     boxTwo.src = "../images/Petro_LogViewer_BoxTwo.png";
     let boxThree = document.getElementById("Petro-Img-BoxThree");
@@ -35,8 +35,8 @@ export function WellCorrlistener() {
       buttons[i].style.background = "#f1741a";
     }
     element.style.background = "rgb(32, 145, 4)";
-    let boxOne = document.getElementById("Petro-Img-BoxOne");
-    boxOne.src = "../images/Petro_WellCorr_BoxOne.png";
+    // let boxOne = document.getElementById("Petro-Img-BoxOne");
+    // boxOne.src = "../images/Petro_WellCorr_BoxOne.png";
     let boxTwo = document.getElementById("Petro-Img-BoxTwo");
     boxTwo.src = "../images/Petro_WellCorr_BoxTwo.png";
     let boxThree = document.getElementById("Petro-Img-BoxThree");
@@ -52,8 +52,8 @@ export function CrossSectionlistener() {
       buttons[i].style.background = "#f1741a";
     }
     element.style.background = "rgb(32, 145, 4)";
-    let boxOne = document.getElementById("Petro-Img-BoxOne");
-    boxOne.src = "../images/Petro_CrossSection_BoxOne.png";
+    // let boxOne = document.getElementById("Petro-Img-BoxOne");
+    // boxOne.src = "../images/Petro_CrossSection_BoxOne.png";
     let boxTwo = document.getElementById("Petro-Img-BoxTwo");
     boxTwo.src = "../images/Petro_CrossSection_BoxTwo.png";
     let boxThree = document.getElementById("Petro-Img-BoxThree");
@@ -69,8 +69,8 @@ export function PropertyLoglistener() {
       buttons[i].style.background = "#f1741a";
     }
     element.style.background = "rgb(32, 145, 4)";
-    let boxOne = document.getElementById("Petro-Img-BoxOne");
-    boxOne.src = "../images/Petro_PropertyLog_BoxOne.png";
+    // let boxOne = document.getElementById("Petro-Img-BoxOne");
+    // boxOne.src = "../images/Petro_PropertyLog_BoxOne.png";
     let boxTwo = document.getElementById("Petro-Img-BoxTwo");
     boxTwo.src = "../images/Petro_PropertyLog_BoxTwo.png";
     let boxThree = document.getElementById("Petro-Img-BoxThree");
@@ -125,9 +125,30 @@ export function buildPetroScreen() {
   </div>
   
   <div class="container">
-  <div class="box-one"><img id="Petro-Img-BoxOne" src="../images/Petro_LogViewer_BoxOne.png" width="100%" height="100%"></div>
+    <div class="box-one">
+      <ul id="tree" style="list-style-type:none;">
+        <li>
+          <button class="well-tree-button" id="GroupOneButton">
+            <i class="fas fa-folder" style="color: tan"></i> 
+            Group 1
+          </button>
+          <ul id="GroupOne" style="list-style-type:none;">
+
+          </ul>
+        </li>
+        <li>
+          <button class="well-tree-button" id="GroupTwoButton">
+          <img src="../images/LogViewer.png" height="18"> 
+            Log Type
+          </button>
+          <ul id="GroupTwo" style="list-style-type:none;">
+
+          </ul>
+        </li>
+      </ul>
+    </div>
   <div class="box-two"><img id="Petro-Img-BoxTwo" src="../images/Petro_LogViewer_BoxTwo.png" width="100%" height="100%"></div>
-  <div class="box-three"><img id="Petro-Img-BoxThree" src="../images/Petro_LogViewer_BoxThree.png" width="100%" height="100%"></div>
+  <div class="box-three"><img id="Petro-Img-BoxThree" src="../images/Petro_LogViewer_BoxThree.png" width="100%" height="625px"></div>
   </div>
 	  `;
 

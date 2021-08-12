@@ -66,9 +66,12 @@ export function buildHomeScreen() {
     </ul>
   </div>
   <div class="box-two"></div>
-  <div class="box-three"><img src="../images/Home_TextPad.png" width="100%" height="625px"></div>
+  <div class="box-three">
+    <form>
+      <textarea>Text pad...</textarea>
+    </form>
+  </div>
 </div>
-
 	`;
 
   Element.mainContent.innerHTML = html;
@@ -76,3 +79,5 @@ export function buildHomeScreen() {
   for (let i = 0; i < navs.length; i++) navs[i].style.background = "white";
   Element.menuHome.style.background = "#f1741a";
 }
+
+// <img src="../images/Home_TextPad.png" width="100%" height="625px">
